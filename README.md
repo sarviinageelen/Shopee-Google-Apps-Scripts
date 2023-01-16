@@ -1,22 +1,22 @@
-Shopee-Google-Apps-Scripts
-==========================
+Overview
+--------
 
-This script is designed to work with Google Sheets, and adds a custom menu to the sheet with two options: "Get JSON" and "Delete Sheets".
+This script creates a custom menu in Google Sheets with two options, "Get JSON" and "Delete Sheets". The script calls the Shopee API to extract promotion IDs and session names, creates new sheets with session names, calls the API again using the promotion IDs as a parameter to extract item IDs, and logs the data in the sheets.
 
-When "Get JSON" is clicked, the script performs the following actions:
+Usage
+-----
 
--   Retrieves the active spreadsheet and all sheets within it.
--   Fetches a JSON file from the website "<https://shopee.com.my/api/v2/flash_sale/get_all_sessions>" and stores it in a variable named "promotionIdJson".
--   Extracts the promotion IDs from the JSON file and stores them in a variable named "promotionId".
--   Logs the promotion IDs in the logs.
--   Extracts the session names from the JSON file and stores them in a variable named "sessionName".
--   Loops through all the promotion IDs and session names.
--   For each promotion ID, it checks if a sheet with the same name as the session name already exists. If it doesn't, it creates a new sheet and names it with the session name.
--   Retrieves another JSON file from the website using the promotion ID as a parameter.
--   Extracts the item IDs from this new JSON file and stores them in a variable named "itemDataTemp".
--   Breaks down the item IDs into groups of 50 and stores them in a variable named "itemData".
--   Loops through each group of item IDs and makes a new API call to get additional data for each item ID.
--   Logs the returned data in the logs.
--   Formats the data and prints it to the sheet.
+-   Open the Google Sheet where you want to add the custom menu
+-   Go to "Tools" -> "Script Editor"
+-   Replace the existing code with the provided script
+-   Save the script and give it a name
+-   Refresh the sheet, you should now see a new menu "Shocking Sale" with options "Get JSON" and "Delete Sheets"
+-   Click on "Get JSON" to extract the data and create new sheets
+-   Check the newly created sheets to view the logged data
+-   Use "Delete Sheets" option to delete all the sheets created by the script
 
-The "Delete Sheets" option allows the user to delete all the sheets that have been created by the script.
+Note
+----
+
+-   The script has been written to extract data from the Shopee API specific endpoint, you may need to update the script to extract data from a different endpoint.
+-   It is necessary to have a sheet named "Template" in the same spreadsheet.
